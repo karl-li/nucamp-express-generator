@@ -38,3 +38,23 @@ exports.jwtPassport = passport.use(
 );
 
 exports.verifyUser = passport.authenticate('jwt', {session: false});
+
+//Create and export a new function named verifyAdmin()
+exports.verifyAdmin = (req, res, next) => {
+    if(req.user.admin) {
+        res.statusCode = 200;
+        res.setHeader("Content-Type", "application/json");
+        return next();
+    } else {
+        err = new Error('You are not authorized to perform this operation!')
+        res.statusCode = 403;
+        return next(err);
+    }
+}
+
+// {
+//   "username": "admin",
+//   "password": "password",
+//   "firstname": "marco",
+//   "lastname": "polo"
+// }
