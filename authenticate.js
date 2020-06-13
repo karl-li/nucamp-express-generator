@@ -51,10 +51,3 @@ exports.verifyAdmin = (req, res, next) => {
         return next(err);
     }
 }
-
-// {
-//   "username": "admin",
-//   "password": "password",
-//   "firstname": "marco",
-//   "lastname": "polo"
-// }
